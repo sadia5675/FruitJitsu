@@ -5,9 +5,10 @@ using UnityEngine;
 public class MoveableObject : MonoBehaviour
 {
     public float speed;
-    // Update is called once per frame
+    // Diese Methode wird in jedem Frame aufgerufen.
     void FixedUpdate()
     {
+        // Bewege das GameObject in die "forward"-Richtung (in Weltkoordinaten) basierend auf der Geschwindigkeit und der vergangenen Zeit.
         transform.Translate(Vector3.forward * Time.deltaTime * speed, Space.World);
     }
 }
