@@ -4,31 +4,53 @@ using UnityEngine;
 
 public class ObjectSpawner : MonoBehaviour
 {
-    // Ein Array, das die verschiedenen Frucht-GameObjects enthält, die gespawnt werden können.
+    // Ein Array, das die verschiedenen Frucht-GameObjects enthï¿½lt, die gespawnt werden kï¿½nnen.
     public GameObject[] Fruits;
-    // Der Punkt, an dem die Früchte gespawnt werden sollen.
+    // Der Punkt, an dem die Frï¿½chte gespawnt werden sollen.
     public Transform SpawnPoint;
     // Die Zeit, die zwischen den einzelnen Spawns vergeht.
     public float IntervalBetweenSpawn;
-    // Die verbleibende Zeit bis zum nächsten Spawn.
+    // Die verbleibende Zeit bis zum nï¿½chsten Spawn.
     private float spawnBetweenTime;
 
-    // FixedUpdate wird aufgerufen, um eine bessere Leistung zu gewährleisten.
-    void FixedUpdate()// für bessere Performance
+    public Transform bombPrefab;
+
+
+    // FixedUpdate wird aufgerufen, um eine bessere Leistung zu gewï¿½hrleisten.
+    void FixedUpdate()// fï¿½r bessere Performance
     {
-        // Überprüfe, ob die Zeit bis zum nächsten Spawn abgelaufen ist.
+        // ï¿½berprï¿½fe, ob die Zeit bis zum nï¿½chsten Spawn abgelaufen ist.
         if (spawnBetweenTime <= 0)
-        {
-            // Wähle eine zufällige Frucht aus dem Array aus.
-            int rand = Random.Range(0, Fruits.Length);
-            // Erzeuge die ausgewählte Frucht an der Spawn-Position.
-            Instantiate(Fruits[rand], new Vector3(SpawnPoint.position.x, SpawnPoint.position.y + 1f, SpawnPoint.position.z), Quaternion.identity);
-            // Setze die Zeit für den nächsten Spawn auf das festgelegte Intervall zurück.
+        {   
+            // Fruechte oder Bombe zufaellig erstellt werden (Wahrscheinlichkeit von Freuchte ist hoeher)
+            if (Random.Range(0f, 1f) < 0.7f) {
+                SpawnFruit();
+            } else {
+                SpawnBomb();
+            }
+            
+            // Setze die Zeit fï¿½r den nï¿½chsten Spawn auf das festgelegte Intervall zurï¿½ck.
             spawnBetweenTime = IntervalBetweenSpawn;
         }
         else {
-            // Verringere die verbleibende Zeit bis zum nächsten Spawn.
+            // Verringere die verbleibende Zeit bis zum nï¿½chsten Spawn.
             spawnBetweenTime -= Time.deltaTime;
         }
+    }
+
+     void SpawnBomb()
+    {
+        float addXPos = Random.Range(-1.6f, 1.6f);
+        Vector3 spawnPos = transform.position + new Vector3(addXPos,0,0);
+        Instantiate(bombPrefab, spawnPos, Quaternion.identity);
+    }
+
+     void SpawnFruit()
+    {
+    
+        // Wï¿½hle eine zufï¿½llige Frucht aus dem Array aus.
+        int rand = Random.Range(0, Fruits.Length);
+        // Erzeuge die ausgewï¿½hlte Frucht an der Spawn-Position.
+        Instantiate(Fruits[rand], new Vector3(SpawnPoint.position.x, SpawnPoint.position.y + 1f, SpawnPoint.position.z), Quaternion.identity);
     }
 }
