@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Destroy
+  - Bomb
+  - Fruit
   layers:
   - Default
   - TransparentFX
