@@ -8,12 +8,26 @@ public class ObjectSpawner : MonoBehaviour
     public GameObject[] Fruits;
     // Der Punkt, an dem die Fr�chte gespawnt werden sollen.
     public Transform SpawnPoint;
-    // Die Zeit, die zwischen den einzelnen Spawns vergeht.
-    public float IntervalBetweenSpawn;
+    // Die Zeit, die zwischen den einzelnen Spawns vergeht. 
+    //Startspeed
+    public float IntervalBetweenSpawn = 5;
+    public float actInterval;
+
+    //je kleiner ist diese Variable, desto kleiner IntervalBetweenSpawn ist -> spawn automatisch schneller
+    public float spawnSpeedMultiplier = 0.98f;
     // Die verbleibende Zeit bis zum n�chsten Spawn.
-    private float spawnBetweenTime;
+    //hab public gemacht, damit ich diese Variable track
+    public float spawnBetweenTime;
+
+    private float bombRate = 0.4f;
 
     public Transform bombPrefab;
+
+    void Start()
+    {
+        // Initialize actInterval here or perform any other necessary initialization.
+        actInterval = IntervalBetweenSpawn;
+    }
 
 
     // FixedUpdate wird aufgerufen, um eine bessere Leistung zu gew�hrleisten.
@@ -23,14 +37,16 @@ public class ObjectSpawner : MonoBehaviour
         if (spawnBetweenTime <= 0)
         {   
             // Fruechte oder Bombe zufaellig erstellt werden (Wahrscheinlichkeit von Freuchte ist hoeher)
-            if (Random.Range(0f, 1f) < 0.7f) {
-                SpawnFruit();
-            } else {
+            if (Random.Range(0f, 1f) < bombRate) {
                 SpawnBomb();
+                
+            } else {
+                SpawnFruit();
             }
             
+            actInterval*=spawnSpeedMultiplier;
             // Setze die Zeit f�r den n�chsten Spawn auf das festgelegte Intervall zur�ck.
-            spawnBetweenTime = IntervalBetweenSpawn;
+            spawnBetweenTime = actInterval;
         }
         else {
             // Verringere die verbleibende Zeit bis zum n�chsten Spawn.

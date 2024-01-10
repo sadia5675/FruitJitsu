@@ -1769,7 +1769,10 @@ MonoBehaviour:
   - {fileID: 1369001872449898, guid: 2f2e54b9f3898eb46a0b47f9a4d4c52b, type: 3}
   - {fileID: 1829371231341652, guid: 426b44a7575f71e479fab4f4e8431989, type: 3}
   SpawnPoint: {fileID: 1565961556}
-  IntervalBetweenSpawn: 5
+  IntervalBetweenSpawn: 2
+  actInterval: 0
+  spawnSpeedMultiplier: 0.98
+  spawnBetweenTime: 0
   bombPrefab: {fileID: 4349518790822088142, guid: bcaa3791bc6132d41bcbad9845726fc3, type: 3}
 --- !u!4 &811857125
 Transform:

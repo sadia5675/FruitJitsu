@@ -20,6 +20,8 @@ public class ScoreScript : MonoBehaviour {
 
         score = 0;
         bombCount = 0;
+        spawner.enabled = true;
+        spawner.actInterval = spawner.IntervalBetweenSpawn;
       
     }
 
