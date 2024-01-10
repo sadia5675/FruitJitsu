@@ -23,7 +23,7 @@ public class SliceCollider : MonoBehaviour
             //Transform plusEffectInstance = Instantiate(plusEffect, theCollision.transform.position, Quaternion.identity);
              // Destroy the particle after the specified duration
             //Destroy(plusEffectInstance.gameObject, effectDuration);
-            myScoreScript.theScore++;
+            myScoreScript.score++;
         }
         else if (collisionGO.CompareTag("Bomb"))
         {
@@ -31,8 +31,12 @@ public class SliceCollider : MonoBehaviour
             //Transform minusEffectInstance = Instantiate(minusEffect, theCollision.transform.position, Quaternion.identity);
              // Destroy the particle after the specified duration
             //Destroy(minusEffectInstance.gameObject, effectDuration);
-
-            myScoreScript.theScore--;
+            Destroy(collisionGO);
+            myScoreScript.bombCount++;
+            if (myScoreScript.bombCount >= 3) {
+                myScoreScript.Explode();
+            }
+           
         }
     }
 }

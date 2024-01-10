@@ -7,6 +7,7 @@ TagManager:
   - Destroy
   - Bomb
   - Fruit
+  - Slice
   layers:
   - Default
   - TransparentFX
