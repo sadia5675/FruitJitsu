@@ -22,6 +22,8 @@ public class ObjectSpawner : MonoBehaviour
     private float bombRate = 0.4f;
 
     public Transform bombPrefab;
+    // Öffentliche Referenz, dadurch kann ObjectSpawner auf die öffentlichen Eigenschaften und Methoden von CalibrationTimer zugreifen.
+    public CalibrationTimer calibrationTimer;
 
     void Start()
     {
@@ -33,24 +35,30 @@ public class ObjectSpawner : MonoBehaviour
     // FixedUpdate wird aufgerufen, um eine bessere Leistung zu gew�hrleisten.
     void FixedUpdate()// f�r bessere Performance
     {
-        // �berpr�fe, ob die Zeit bis zum n�chsten Spawn abgelaufen ist.
-        if (spawnBetweenTime <= 0)
-        {   
-            // Fruechte oder Bombe zufaellig erstellt werden (Wahrscheinlichkeit von Freuchte ist hoeher)
-            if (Random.Range(0f, 1f) < bombRate) {
-                SpawnBomb();
-                
-            } else {
-                SpawnFruit();
+        // Überprüft, ob eine gültige Referenz auf CalibrationTimer vorhanden ist und ob die Bedingung für das Spawnen erfüllt ist.
+        if (calibrationTimer != null && calibrationTimer.AllowSpawn) {
+            Debug.Log("Spawn erlaubt!");
+            // �berpr�fe, ob die Zeit bis zum n�chsten Spawn abgelaufen ist.
+            if (spawnBetweenTime <= 0)
+            {
+                // Fruechte oder Bombe zufaellig erstellt werden (Wahrscheinlichkeit von Freuchte ist hoeher)
+                if (Random.Range(0f, 1f) < bombRate) {
+                    SpawnBomb();
+
+                } else {
+                    SpawnFruit();
+                }
+
+                actInterval *= spawnSpeedMultiplier;
+                // Setze die Zeit f�r den n�chsten Spawn auf das festgelegte Intervall zur�ck.
+                spawnBetweenTime = actInterval;
             }
-            
-            actInterval*=spawnSpeedMultiplier;
-            // Setze die Zeit f�r den n�chsten Spawn auf das festgelegte Intervall zur�ck.
-            spawnBetweenTime = actInterval;
-        }
-        else {
-            // Verringere die verbleibende Zeit bis zum n�chsten Spawn.
-            spawnBetweenTime -= Time.deltaTime;
+            else {
+                // Verringere die verbleibende Zeit bis zum n�chsten Spawn.
+                spawnBetweenTime -= Time.deltaTime;
+            }
+        }else{
+            Debug.Log("Spawn nicht erlaubt oder CalibrationTimer nicht zugewiesen.");
         }
     }
 
