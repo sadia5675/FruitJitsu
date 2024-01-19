@@ -2034,6 +2034,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00f8a90c0144ea844beb92609f1c4a3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effect: {fileID: 4164528543026860, guid: 779aa8c25fbd0e1488637639c9fff976, type: 3}
+  effectDuration: 1
 --- !u!114 &868463994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2510,6 +2512,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00f8a90c0144ea844beb92609f1c4a3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effect: {fileID: 4164528543026860, guid: 779aa8c25fbd0e1488637639c9fff976, type: 3}
+  effectDuration: 1
 --- !u!114 &1435919781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2826,6 +2830,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: d8e90e9806751254e9d4144fc7ee3d7c, type: 2}
+    - target: {fileID: 91537696508703369, guid: 8526fc62d267e704aabe14dd3ca9d7ed, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 91537696875061967, guid: 8526fc62d267e704aabe14dd3ca9d7ed, type: 3}

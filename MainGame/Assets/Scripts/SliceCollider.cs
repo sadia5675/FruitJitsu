@@ -6,6 +6,8 @@ using UnityEngine;
 //erhoeht oder vermindert die Punkte ggf. Effekte (ohne Distroy)
 public class SliceCollider : MonoBehaviour
 {
+    public Transform effect;
+    public int effectDuration;
     ScoreScript myScoreScript;
     void Awake()
     {
@@ -23,14 +25,15 @@ public class SliceCollider : MonoBehaviour
             //Transform plusEffectInstance = Instantiate(plusEffect, theCollision.transform.position, Quaternion.identity);
              // Destroy the particle after the specified duration
             //Destroy(plusEffectInstance.gameObject, effectDuration);
+  
             myScoreScript.score++;
         }
         else if (collisionGO.CompareTag("Bomb"))
         {
 
-            //Transform minusEffectInstance = Instantiate(minusEffect, theCollision.transform.position, Quaternion.identity);
+            Transform minusEffectInstance = Instantiate(effect, theCollision.transform.position, Quaternion.identity);
              // Destroy the particle after the specified duration
-            //Destroy(minusEffectInstance.gameObject, effectDuration);
+            Destroy(minusEffectInstance.gameObject, effectDuration);
             Destroy(collisionGO);
             myScoreScript.bombCount++;
             if (myScoreScript.bombCount >= 3) {
