@@ -85,5 +85,3 @@ public class ObjectSpawner : MonoBehaviour
         Instantiate(Fruits[rand], new Vector3(SpawnPoint.position.x, SpawnPoint.position.y + 1f, SpawnPoint.position.z), Quaternion.identity);
     }
 }
-
-
