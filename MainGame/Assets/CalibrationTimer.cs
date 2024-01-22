@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class CalibrationTimer : MonoBehaviour
 {
+    //Zum Start des Spieles aufgerufen um die Position des Avaters richtig einzunehem--> die Bewegung dann auszuführen
     public PipeServer server;
     public int timer = 5;
     public KeyCode calibrationKey = KeyCode.C;
@@ -13,6 +14,7 @@ public class CalibrationTimer : MonoBehaviour
     public bool AllowSpawn = false;
 
     private bool calibrated;
+
 
     private void Start()
     {

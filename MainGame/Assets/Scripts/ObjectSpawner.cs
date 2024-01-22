@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class ObjectSpawner : MonoBehaviour
 {
-    // Ein Array, das die verschiedenen Frucht-GameObjects enth�lt, die gespawnt werden k�nnen.
+    // Ein Array, das die verschiedenen Frucht-GameObjects enthï¿½lt, die gespawnt werden kï¿½nnen.
     public GameObject[] Fruits;
-    // Der Punkt, an dem die Fr�chte gespawnt werden sollen.
+    // Der Punkt, an dem die Frï¿½chte gespawnt werden sollen.
     public Transform SpawnPoint;
     // Die Zeit, die zwischen den einzelnen Spawns vergeht. 
     //Startspeed
@@ -15,14 +15,14 @@ public class ObjectSpawner : MonoBehaviour
 
     //je kleiner ist diese Variable, desto kleiner IntervalBetweenSpawn ist -> spawn automatisch schneller
     public float spawnSpeedMultiplier = 0.98f;
-    // Die verbleibende Zeit bis zum n�chsten Spawn.
+    // Die verbleibende Zeit bis zum nï¿½chsten Spawn.
     //hab public gemacht, damit ich diese Variable track
     public float spawnBetweenTime;
 
     private float bombRate = 0.4f;
 
     public Transform bombPrefab;
-    // Öffentliche Referenz, dadurch kann ObjectSpawner auf die öffentlichen Eigenschaften und Methoden von CalibrationTimer zugreifen.
+    // Ã–ffentliche Referenz, dadurch kann ObjectSpawner auf die Ã¶ffentlichen Eigenschaften und Methoden von CalibrationTimer zugreifen.
     public CalibrationTimer calibrationTimer;
 
     void Start()
@@ -32,49 +32,58 @@ public class ObjectSpawner : MonoBehaviour
     }
 
 
-    // FixedUpdate wird aufgerufen, um eine bessere Leistung zu gew�hrleisten.
-    void FixedUpdate()// f�r bessere Performance
+    // FixedUpdate wird aufgerufen, um eine bessere Leistung zu gewï¿½hrleisten.
+    void FixedUpdate()// fï¿½r bessere Performance
     {
-        // Überprüft, ob eine gültige Referenz auf CalibrationTimer vorhanden ist und ob die Bedingung für das Spawnen erfüllt ist.
-        if (calibrationTimer != null && calibrationTimer.AllowSpawn) {
+        // ÃœberprÃ¼ft, ob eine gÃ¼ltige Referenz auf CalibrationTimer vorhanden ist und ob die Bedingung fÃ¼r das Spawnen erfÃ¼llt ist.
+        if (calibrationTimer != null && calibrationTimer.AllowSpawn)
+        {
             Debug.Log("Spawn erlaubt!");
-            // �berpr�fe, ob die Zeit bis zum n�chsten Spawn abgelaufen ist.
+            // ï¿½berprï¿½fe, ob die Zeit bis zum nï¿½chsten Spawn abgelaufen ist.
             if (spawnBetweenTime <= 0)
             {
                 // Fruechte oder Bombe zufaellig erstellt werden (Wahrscheinlichkeit von Freuchte ist hoeher)
-                if (Random.Range(0f, 1f) < bombRate) {
+                if (Random.Range(0f, 1f) < bombRate)
+                {
                     SpawnBomb();
 
-                } else {
+                }
+                else
+                {
                     SpawnFruit();
                 }
 
                 actInterval *= spawnSpeedMultiplier;
-                // Setze die Zeit f�r den n�chsten Spawn auf das festgelegte Intervall zur�ck.
+                // Setze die Zeit fï¿½r den nï¿½chsten Spawn auf das festgelegte Intervall zurï¿½ck.
                 spawnBetweenTime = actInterval;
             }
-            else {
-                // Verringere die verbleibende Zeit bis zum n�chsten Spawn.
+            else
+            {
+                // Verringere die verbleibende Zeit bis zum nï¿½chsten Spawn.
                 spawnBetweenTime -= Time.deltaTime;
             }
-        }else{
+        }
+        else
+        {
             Debug.Log("Spawn nicht erlaubt oder CalibrationTimer nicht zugewiesen.");
         }
     }
 
-     void SpawnBomb()
+    void SpawnBomb()
     {
         float addXPos = Random.Range(-1.6f, 1.6f);
-        Vector3 spawnPos = transform.position + new Vector3(addXPos,0,0);
+        Vector3 spawnPos = transform.position + new Vector3(addXPos, 0, 0);
         Instantiate(bombPrefab, spawnPos, Quaternion.identity);
     }
 
-     void SpawnFruit()
+    void SpawnFruit()
     {
-    
-        // W�hle eine zuf�llige Frucht aus dem Array aus.
+
+        // Wï¿½hle eine zufï¿½llige Frucht aus dem Array aus.
         int rand = Random.Range(0, Fruits.Length);
-        // Erzeuge die ausgew�hlte Frucht an der Spawn-Position.
+        // Erzeuge die ausgewï¿½hlte Frucht an der Spawn-Position.
         Instantiate(Fruits[rand], new Vector3(SpawnPoint.position.x, SpawnPoint.position.y + 1f, SpawnPoint.position.z), Quaternion.identity);
     }
 }
+
+

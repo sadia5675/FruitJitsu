@@ -9,9 +9,12 @@ public class SliceCollider : MonoBehaviour
     public Transform effect;
     public int effectDuration;
     ScoreScript myScoreScript;
+    AudioManager audiomanager;
+
     void Awake()
     {
         myScoreScript  = transform.GetComponentInParent<ScoreScript>();
+        audiomanager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     //Triggered by Unity's Physics
@@ -38,6 +41,11 @@ public class SliceCollider : MonoBehaviour
             myScoreScript.bombCount++;
             if (myScoreScript.bombCount >= 3) {
                 myScoreScript.Explode();
+                audiomanager.PlaySFX(audiomanager.gameOver);
+            }
+            else
+            {
+                audiomanager.PlaySFX(audiomanager.bombe);
             }
            
         }
