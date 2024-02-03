@@ -14,17 +14,17 @@ public class AudioManager : MonoBehaviour
     //AudioSource
     // [Header("---------- Audi Source ----------")]
     [SerializeField] AudioSource SFXSource;
-    AudioSource audioSource; 
+    [SerializeField] AudioSource audioSource; 
     
     // Audio Clip
     public AudioClip bombe;
     public AudioClip gameOver;
+    public AudioClip juicySound;
 
     public void PlaySFX(AudioClip clip)
     {
         SFXSource.PlayOneShot(clip); 
     }
-    
     public void Awake()
     {
         spectrumWidth = new float[64];

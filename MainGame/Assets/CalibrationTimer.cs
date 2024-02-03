@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class CalibrationTimer : MonoBehaviour
 {
@@ -45,6 +46,7 @@ public class CalibrationTimer : MonoBehaviour
             yield return new WaitForSeconds(1f);
             --t;
         }
+        //audio.PlayMusik(audio.background); 
         Avatar[] a = FindObjectsByType<Avatar>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
         foreach(Avatar aa in a)
         {

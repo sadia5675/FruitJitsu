@@ -9,8 +9,13 @@ public class Slicer : MonoBehaviour
     public bool isTouched;
     // Die Kraft, mit der die geschnittenen Teile auseinander fliegen.
     public float cutForce = 2000;
-    
+    AudioManager audiomanager;
+
     // Wird jeden Frame aufgerufen.
+    public void Awake()
+    {
+        audiomanager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
     private void Update()
     {
         if (isTouched == true)
@@ -23,6 +28,7 @@ public class Slicer : MonoBehaviour
             // Iteriere durch jedes zu schneidende Objekt.
             foreach (Collider objectToBeSliced in objectsToBeSliced)
             {
+                audiomanager.PlaySFX(audiomanager.juicySound);
                 // Schneide das Objekt und erhalte die geschnittenen Teile.
                 SlicedHull slicedObject = SliceObject(objectToBeSliced.gameObject, materialAfterSlice);
 
