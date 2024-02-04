@@ -39,7 +39,7 @@ public class ObjectSpawner : MonoBehaviour
 
 
         // Überprüft, ob eine gültige Referenz auf CalibrationTimer vorhanden ist und ob die Bedingung für das Spawnen erfüllt ist.
-        if (calibrationTimer != null && myUIController.isOnGame)
+        if (calibrationTimer != null && myUIController.isOnGame &&isActiveAndEnabled)
         {
 //            Debug.Log("highFrequency: " + highFrequency);
 
