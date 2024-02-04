@@ -759,6 +759,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   score: 0
   bombCount: 0
+  myUIController: {fileID: 1060789834}
   spawner: {fileID: 811857124}
 --- !u!114 &364923105
 MonoBehaviour:
@@ -840,7 +841,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fff5d6a4ca067a74385e949015d9f006, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiObject: {fileID: 0}
+  uiObject: {fileID: 2140376866}
+  myScoreScript: {fileID: 364923104}
+  isOnGame: 0
 --- !u!1 &381108381 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100338, guid: 49f2055d53eeb4e5a92af590a44bddee, type: 3}
@@ -885,6 +888,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   score: 0
   bombCount: 0
+  myUIController: {fileID: 0}
   spawner: {fileID: 811857124}
 --- !u!1001 &451194994
 PrefabInstance:
@@ -1072,13 +1076,13 @@ PrefabInstance:
       addedObject: {fileID: 1007241489}
     - targetCorrespondingSourceObject: {fileID: 3732298584406873480, guid: 83628a2e699576147adabb30587f44d4, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1007241488}
-    - targetCorrespondingSourceObject: {fileID: 3732298584406873480, guid: 83628a2e699576147adabb30587f44d4, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1007241487}
     - targetCorrespondingSourceObject: {fileID: 3732298584406873480, guid: 83628a2e699576147adabb30587f44d4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1007241490}
+    - targetCorrespondingSourceObject: {fileID: 3732298584406873480, guid: 83628a2e699576147adabb30587f44d4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1007241491}
   m_SourcePrefab: {fileID: 100100000, guid: 83628a2e699576147adabb30587f44d4, type: 3}
 --- !u!1 &499442781
 GameObject:
@@ -2597,6 +2601,7 @@ MonoBehaviour:
   SpawnPoints:
   - {fileID: 837046976}
   - {fileID: 1353550491}
+  myUIController: {fileID: 364923110}
 --- !u!4 &811857125
 Transform:
   m_ObjectHideFlags: 0
@@ -3029,22 +3034,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00f8a90c0144ea844beb92609f1c4a3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effect: {fileID: 0}
-  effectDuration: 0
---- !u!114 &1007241488
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1007241485}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00f8a90c0144ea844beb92609f1c4a3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  effect: {fileID: 0}
-  effectDuration: 0
+  effect: {fileID: 4164528543026860, guid: 779aa8c25fbd0e1488637639c9fff976, type: 3}
+  effectDuration: 1
 --- !u!136 &1007241489
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3081,6 +3072,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiObject: {fileID: 2140376866}
+  myScoreScript: {fileID: 364923104}
+  isOnGame: 0
+--- !u!114 &1007241491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1007241485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68b68571671f4754898ca333428f0352, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slicer: {fileID: 1076558293}
 --- !u!1 &1042003714 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 91537696499171573, guid: 8526fc62d267e704aabe14dd3ca9d7ed, type: 3}
@@ -3105,6 +3111,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   score: 0
   bombCount: 0
+  myUIController: {fileID: 0}
   spawner: {fileID: 811857124}
 --- !u!114 &1042003718
 MonoBehaviour:
@@ -3171,7 +3178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68b68571671f4754898ca333428f0352, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slicer: {fileID: 0}
+  slicer: {fileID: 739775073}
 --- !u!114 &1060789833
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3184,8 +3191,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00f8a90c0144ea844beb92609f1c4a3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effect: {fileID: 0}
-  effectDuration: 0
+  effect: {fileID: 4164528543026860, guid: 779aa8c25fbd0e1488637639c9fff976, type: 3}
+  effectDuration: 1
 --- !u!114 &1060789834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3199,6 +3206,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiObject: {fileID: 2140376866}
+  myScoreScript: {fileID: 364923104}
+  isOnGame: 0
 --- !u!1 &1076558291
 GameObject:
   m_ObjectHideFlags: 0
@@ -4022,7 +4031,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 91537696499171573, guid: 8526fc62d267e704aabe14dd3ca9d7ed, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 91537696499171593, guid: 8526fc62d267e704aabe14dd3ca9d7ed, type: 3}
       propertyPath: m_IsActive

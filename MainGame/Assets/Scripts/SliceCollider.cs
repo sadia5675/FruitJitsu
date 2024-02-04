@@ -39,6 +39,7 @@ public class SliceCollider : MonoBehaviour
             Destroy(minusEffectInstance.gameObject, effectDuration);
             Destroy(collisionGO);
             myScoreScript.bombCount++;
+            Debug.Log("Bomb Count: " +myScoreScript.bombCount);
             if (myScoreScript.bombCount >= 3) {
                 myScoreScript.Explode();
                 audiomanager.PlaySFX(audiomanager.gameOver);

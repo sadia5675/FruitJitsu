@@ -27,6 +27,8 @@ public class ObjectSpawner : MonoBehaviour
 
     public Transform[] SpawnPoints;
 
+    public PlayerUIController myUIController;
+
 
 
     // FixedUpdate wird aufgerufen, um eine bessere Leistung zu gew�hrleisten.
@@ -37,9 +39,9 @@ public class ObjectSpawner : MonoBehaviour
 
 
         // Überprüft, ob eine gültige Referenz auf CalibrationTimer vorhanden ist und ob die Bedingung für das Spawnen erfüllt ist.
-        if (calibrationTimer != null && calibrationTimer.AllowSpawn)
+        if (calibrationTimer != null && myUIController.isOnGame)
         {
-            Debug.Log("highFrequency: " + highFrequency);
+//            Debug.Log("highFrequency: " + highFrequency);
 
             if (objectReactingToBass > 1.2f)
             {
@@ -55,7 +57,7 @@ public class ObjectSpawner : MonoBehaviour
             }
             if (highFrequency > 2.9f)
             {
-                Debug.Log("high:"+highFrequency);
+//                Debug.Log("high:"+highFrequency);
 
                 if (Random.Range(0f, 3f) < bombRate)
                 {

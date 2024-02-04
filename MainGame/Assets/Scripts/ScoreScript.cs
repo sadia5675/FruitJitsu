@@ -6,15 +6,15 @@ public class ScoreScript : MonoBehaviour {
     public int score = 0;
     public int bombCount = 0;
     public static ScoreScript Instance { get; private set; }
-    [SerializeField] private ObjectSpawner spawner;
+    public PlayerUIController myUIController;
+   public ObjectSpawner spawner;
 
     private void Start()
     {
-        NewGame();
     }
 
     
-     private void NewGame()
+    public void NewGame()
     {
         Time.timeScale = 1f;
 
@@ -27,8 +27,9 @@ public class ScoreScript : MonoBehaviour {
 
      public void Explode()
     {
+        Debug.Log("Exploded");
         spawner.enabled = false;
-        NewGame();
+        myUIController.gameoverUIsetting();
         //StartCoroutine(ExplodeSequence());
     }
 

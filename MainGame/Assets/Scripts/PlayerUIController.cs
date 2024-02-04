@@ -4,16 +4,17 @@ using UnityEngine;
 public class PlayerUIController : MonoBehaviour
 {
     public GameObject uiObject;
+    public ScoreScript myScoreScript;
      Vector3 newCameraPosition=new Vector3(0.4f, -3.23f, -9.76f);
      Vector3 newCameraRotation=new Vector3(30.8f, -179.63f, -0.045f);
-    //Vector3 basePos,baseRot;
+    Vector3 basePos,baseRot;
 
-    //Boolean isOnGameCamera = false;
+    public Boolean isOnGame= false;
 
     void Start()
     {
-        //basePos=Camera.main.transform.position;
-        //baseRot = Camera.main.transform.eulerAngles;
+        basePos=Camera.main.transform.position;
+        baseRot = Camera.main.transform.eulerAngles;
     }
 
 
@@ -39,10 +40,22 @@ public class PlayerUIController : MonoBehaviour
     void playUIsetting(){
         Camera.main.transform.position = newCameraPosition;
         Camera.main.transform.eulerAngles = newCameraRotation;
+        isOnGame=true;
         if (uiObject != null)
         {
             // Deactivate the UI object
             uiObject.SetActive(false);
         }
+        myScoreScript.NewGame();
+    }
+
+    public void gameoverUIsetting(){
+        Camera.main.transform.position = basePos;
+        Camera.main.transform.eulerAngles = baseRot;
+        isOnGame=false;
+
+            // Deactivate the UI object
+        uiObject.SetActive(true);
+        
     }
 }
