@@ -9,6 +9,7 @@ TagManager:
   - Fruit
   - Slice
   - Audio
+  - PlayButton
   layers:
   - Default
   - TransparentFX
