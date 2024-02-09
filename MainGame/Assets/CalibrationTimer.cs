@@ -12,7 +12,7 @@ public class CalibrationTimer : MonoBehaviour
     public KeyCode calibrationKey = KeyCode.C;
     public TextMeshProUGUI text;
     // damit ObjectSpawner darauf zugreifen kann.
-    public bool AllowSpawn = false;
+    public bool aktivPlayerModus = false;
 
     private bool calibrated;
 
@@ -56,7 +56,7 @@ public class CalibrationTimer : MonoBehaviour
         {
             text.text = "Calibration Completed";
             server.SetVisible(false);
-            AllowSpawn = true; // Setze die Variable für das Spawnen auf true
+            aktivPlayerModus = true; // Setze die Variable für das Spawnen auf true
         }
         else
         {

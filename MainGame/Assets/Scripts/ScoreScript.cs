@@ -8,7 +8,7 @@ public class ScoreScript : MonoBehaviour {
     public static ScoreScript Instance { get; private set; }
     public PlayerUIController myUIController;
    public ObjectSpawner spawner;
-
+    public AudioSource audio; 
     private void Start()
     {
     }
@@ -20,6 +20,12 @@ public class ScoreScript : MonoBehaviour {
 
         score = 0;
         bombCount = 0;
+        //audio.enabled = true; 
+        if (audio.enabled==true)
+        {
+            audio.Play();
+
+        }
         spawner.enabled = true;
         spawner.actInterval = spawner.IntervalBetweenSpawn;
       
@@ -28,7 +34,9 @@ public class ScoreScript : MonoBehaviour {
      public void Explode()
     {
         Debug.Log("Exploded");
-        spawner.enabled = false;
+        audio.Stop();
+        spawner.enabled = false; 
+        //audio.enabled=false; 
         myUIController.gameoverUIsetting();
         //StartCoroutine(ExplodeSequence());
     }

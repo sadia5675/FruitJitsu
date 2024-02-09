@@ -761,6 +761,7 @@ MonoBehaviour:
   bombCount: 0
   myUIController: {fileID: 1060789834}
   spawner: {fileID: 811857124}
+  audio: {fileID: 1908817286}
 --- !u!114 &364923105
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -789,7 +790,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 364923102}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 10038fdbf93c4dd43af9ce774d03a956, type: 3}
   m_Controller: {fileID: 9100000, guid: d8e90e9806751254e9d4144fc7ee3d7c, type: 2}
   m_CullingMode: 0
@@ -890,6 +891,7 @@ MonoBehaviour:
   bombCount: 0
   myUIController: {fileID: 0}
   spawner: {fileID: 811857124}
+  audio: {fileID: 0}
 --- !u!1001 &451194994
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2790,6 +2792,8 @@ MonoBehaviour:
   - 0
   - 0
   - 0
+  calibrationTimer: {fileID: 0}
+  myUIController: {fileID: 0}
   SFXSource: {fileID: 0}
   audioSource: {fileID: 0}
   bombe: {fileID: 0}
@@ -3113,6 +3117,7 @@ MonoBehaviour:
   bombCount: 0
   myUIController: {fileID: 0}
   spawner: {fileID: 811857124}
+  audio: {fileID: 0}
 --- !u!114 &1042003718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3731,7 +3736,7 @@ MonoBehaviour:
   timer: 10
   calibrationKey: 99
   text: {fileID: 664772508}
-  AllowSpawn: 0
+  aktivPlayerModus: 0
 --- !u!4 &1232159307
 Transform:
   m_ObjectHideFlags: 0
@@ -4334,8 +4339,10 @@ MonoBehaviour:
   - 0
   - 0
   - 0
+  calibrationTimer: {fileID: 1232159306}
+  myUIController: {fileID: 364923110}
   SFXSource: {fileID: 633391923}
-  audioSource: {fileID: 1103571979}
+  audioSource: {fileID: 1908817286}
   bombe: {fileID: 8300000, guid: ffe38e5ffaceb8b4b988c1474b86ad18, type: 3}
   gameOver: {fileID: 8300000, guid: 6d0fabd86fd619148ae459dfe3600ae6, type: 3}
   juicySound: {fileID: 8300000, guid: 606fc4fcc44e3d94ea740f9a373e5af8, type: 3}
