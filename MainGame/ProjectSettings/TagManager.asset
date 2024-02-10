@@ -10,6 +10,9 @@ TagManager:
   - Slice
   - Audio
   - PlayButton
+  - SwitchButton
+  - OkButton
+  - NextButton
   layers:
   - Default
   - TransparentFX

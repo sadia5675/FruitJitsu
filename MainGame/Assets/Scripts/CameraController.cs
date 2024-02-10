@@ -18,7 +18,7 @@ public class CameraController : MonoBehaviour
     void Update()
     {
         // Check for mouse click
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(1))//rechte maustaste
         {
             
             if(!isOnGameCamera) {
