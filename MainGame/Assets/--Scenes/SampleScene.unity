@@ -1065,6 +1065,7 @@ MonoBehaviour:
   switchMenu: {fileID: 444361957}
   myScoreScript: {fileID: 381108402}
   myCharacterSwitcher: {fileID: 0}
+  audioM: {fileID: 0}
   images:
   - {fileID: 1077302570}
   - {fileID: 1885375642}
@@ -3765,7 +3766,7 @@ MonoBehaviour:
   - 0
   - 0
   calibrationTimer: {fileID: 0}
-  myCharacterSwitcher: {fileID: 0}
+  startSong: 0
   SFXSource: {fileID: 0}
   audioSource: {fileID: 0}
   bombe: {fileID: 0}
@@ -5952,7 +5953,7 @@ MonoBehaviour:
   - 0
   - 0
   calibrationTimer: {fileID: 1232159306}
-  myCharacterSwitcher: {fileID: 2066688675}
+  startSong: 0
   SFXSource: {fileID: 633391923}
   audioSource: {fileID: 1908817286}
   bombe: {fileID: 8300000, guid: ffe38e5ffaceb8b4b988c1474b86ad18, type: 3}
@@ -7344,7 +7345,7 @@ PrefabInstance:
     - target: {fileID: 2477197055193140499, guid: 1fcdfee56b335d242afc96c527b58108, type: 3}
       propertyPath: audioS
       value: 
-      objectReference: {fileID: 1908817286}
+      objectReference: {fileID: 0}
     - target: {fileID: 2477197055193140499, guid: 1fcdfee56b335d242afc96c527b58108, type: 3}
       propertyPath: spawner
       value: 
@@ -7373,6 +7374,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9184753395171104099, guid: 1fcdfee56b335d242afc96c527b58108, type: 3}
+      propertyPath: audioM
+      value: 
+      objectReference: {fileID: 1908817285}
     - target: {fileID: 9184753395171104099, guid: 1fcdfee56b335d242afc96c527b58108, type: 3}
       propertyPath: mainMenu
       value: 
@@ -7505,7 +7510,7 @@ PrefabInstance:
     - target: {fileID: 3644426695250100624, guid: 550ea544e3d1476489113de020c64df8, type: 3}
       propertyPath: audioS
       value: 
-      objectReference: {fileID: 1908817286}
+      objectReference: {fileID: 0}
     - target: {fileID: 3644426695250100624, guid: 550ea544e3d1476489113de020c64df8, type: 3}
       propertyPath: spawner
       value: 
@@ -7530,6 +7535,10 @@ PrefabInstance:
       propertyPath: hearts.Array.data[2]
       value: 
       objectReference: {fileID: 1120436413}
+    - target: {fileID: 7516048844096525221, guid: 550ea544e3d1476489113de020c64df8, type: 3}
+      propertyPath: audioM
+      value: 
+      objectReference: {fileID: 1908817285}
     - target: {fileID: 7516048844096525221, guid: 550ea544e3d1476489113de020c64df8, type: 3}
       propertyPath: mainMenu
       value: 
@@ -7613,7 +7622,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2351411565340531480, guid: eaaf0c1954d265f42b29f62d0db382bb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.77
+      value: -0.21
       objectReference: {fileID: 0}
     - target: {fileID: 2351411565340531480, guid: eaaf0c1954d265f42b29f62d0db382bb, type: 3}
       propertyPath: m_LocalPosition.y
@@ -7662,7 +7671,7 @@ PrefabInstance:
     - target: {fileID: 5861637705316219748, guid: eaaf0c1954d265f42b29f62d0db382bb, type: 3}
       propertyPath: audioS
       value: 
-      objectReference: {fileID: 1908817286}
+      objectReference: {fileID: 0}
     - target: {fileID: 5861637705316219748, guid: eaaf0c1954d265f42b29f62d0db382bb, type: 3}
       propertyPath: spawner
       value: 
@@ -7691,6 +7700,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7314840739847284563, guid: eaaf0c1954d265f42b29f62d0db382bb, type: 3}
+      propertyPath: audioM
+      value: 
+      objectReference: {fileID: 1908817285}
     - target: {fileID: 7314840739847284563, guid: eaaf0c1954d265f42b29f62d0db382bb, type: 3}
       propertyPath: mainMenu
       value: 

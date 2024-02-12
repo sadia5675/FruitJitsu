@@ -11,6 +11,7 @@ public class PlayerUIController : MonoBehaviour
 
     public ScoreScript myScoreScript;
     public CharacterSwitcher myCharacterSwitcher;
+    public AudioManager audioM;
     
 
      Vector3 newCameraPosition=new Vector3(0.4f, -3.23f, -9.76f);
@@ -152,6 +153,7 @@ public class PlayerUIController : MonoBehaviour
         Camera.main.transform.position = newCameraPosition;
         Camera.main.transform.eulerAngles = newCameraRotation;
         myCharacterSwitcher.isOnGame=true;
+        audioM.startSong = true;
 
             // Deactivate the UI object
         mainMenu.SetActive(false);
@@ -163,6 +165,7 @@ public class PlayerUIController : MonoBehaviour
         Camera.main.transform.position = basePos;
         Camera.main.transform.eulerAngles = baseRot;
         myCharacterSwitcher.isOnGame=false;
+        audioM.startSong = false;
 
         // Activate the UI object
         mainMenu.SetActive(true);
