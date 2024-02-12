@@ -11,9 +11,8 @@ public class PlayerUIController : MonoBehaviour
     Vector3 basePos,baseRot;
     public GameObject switchMenu; 
     public RawImage[] images;  
-    public Boolean isOnGame= false;
-    public int counterForClicks=0;
-    private bool isNextActive=false;
+    public bool isOnGame= false;
+    public int posBasedOnClicks=0;
     public Avatar[] avatars;
     private bool initialized; 
     void Start()
@@ -70,39 +69,46 @@ public class PlayerUIController : MonoBehaviour
         if (collisionGO.CompareTag("NextButton"))
         {
             Debug.Log("Nächster Player ");
-            nextPlayer(images, initialized); 
+            choosePlayer(); 
 
             
         }
     }
-    public void nextPlayer(RawImage[] images, bool initialized)
+void choosePlayer()
     {
+        Debug.Log(posBasedOnClicks);
         if (!initialized)
         {
             foreach (Avatar a in avatars)
             {
                 a.gameObject.SetActive(false);
             }
+
+            foreach (RawImage r in images)
+            {
+                r.enabled = false;
+            }
+
             initialized = true;
         }
-        Debug.Log(counterForClicks);
-        //zweite runde , der aktive Player wird deaktiviert 
-        if (counterForClicks - 1 >= 0)
-            avatars[counterForClicks - 1].gameObject.SetActive(false);
+        //zweite runde
+        if (posBasedOnClicks >= 0)
+        {
+            avatars[posBasedOnClicks].gameObject.SetActive(false);
+            images[posBasedOnClicks].enabled = false;
+        }
 
-        for (int i =0; i<images.Length; i++)
+        ++posBasedOnClicks;
+        //neuer Player wird aktiviert 
+        if (posBasedOnClicks >= avatars.Length)
         {
-            images[i].enabled = false; 
+            posBasedOnClicks = 0;
         }
-        if (counterForClicks>=images.Length || counterForClicks >= avatars.Length)
-        {
-            counterForClicks = 0;
-        }
-              //neuer Player wird aktiviert 
-            avatars[counterForClicks].gameObject.SetActive(true);
-            images[counterForClicks].enabled = true;
-            counterForClicks++;  
-     }
+        avatars[posBasedOnClicks].gameObject.SetActive(true);
+        images[posBasedOnClicks].enabled = true;
+  
+    }
+
 
     void playUIsetting(){
         Camera.main.transform.position = newCameraPosition;
