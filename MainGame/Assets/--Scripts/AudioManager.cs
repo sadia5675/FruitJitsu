@@ -30,7 +30,6 @@ public class AudioManager : MonoBehaviour
     {
         spectrumWidth = new float[64];
         audioSource = GetComponent<AudioSource>();
-        audioSource.enabled = false; 
         instance = this;
 
     }

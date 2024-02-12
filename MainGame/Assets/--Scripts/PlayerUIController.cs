@@ -16,19 +16,11 @@ public class PlayerUIController : MonoBehaviour
 
      Vector3 newCameraPosition=new Vector3(0.4f, -3.23f, -9.76f);
      Vector3 newCameraRotation=new Vector3(30.8f, -179.63f, -0.045f);
-    Vector3 basePos,baseRot;
+     Vector3 basePos,baseRot;
 
-   
-    public RawImage[] images;  
-    //public bool isOnGame= false;
-
-    public int posBasedOnClicks=0;
-    public Avatar[] avatars;
-    private bool initialized; 
     void Start()
     {
 
-        initialized = false; 
         basePos =Camera.main.transform.position;
         baseRot = Camera.main.transform.eulerAngles;
         //switchMenu.SetActive(false); 
@@ -47,7 +39,7 @@ public class PlayerUIController : MonoBehaviour
         // Check if the collided object has the "Button" tag
         if (collisionGO.CompareTag("PlayButton"))
         {
-            Debug.Log("Collided ");
+            Debug.Log("Play ");
             // Call a function or perform an action when player collides with the button
             playUIsetting();
 
@@ -80,7 +72,6 @@ public class PlayerUIController : MonoBehaviour
         if (collisionGO.CompareTag("NextButton"))
         {
             Debug.Log("N�chster Player ");
-            //choosePlayer(); 
             myCharacterSwitcher.NextCharacter();
 
             
@@ -158,6 +149,7 @@ public class PlayerUIController : MonoBehaviour
             // Deactivate the UI object
         mainMenu.SetActive(false);
         myScoreScript.NewGame();
+        myScoreScript.resetHealth();
         Debug.Log("Play-UIController");
     }
 
