@@ -13,6 +13,10 @@ TagManager:
   - SwitchButton
   - OkButton
   - NextButton
+  - InstructionButton
+  - OptionButton
+  - BackMain
+  - BackOption
   layers:
   - Default
   - TransparentFX
