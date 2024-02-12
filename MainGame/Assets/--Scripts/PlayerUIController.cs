@@ -19,7 +19,7 @@ public class PlayerUIController : MonoBehaviour
 
    
     public RawImage[] images;  
-    public bool isOnGame= false;
+    //public bool isOnGame= false;
 
     public int posBasedOnClicks=0;
     public Avatar[] avatars;
@@ -151,17 +151,18 @@ public class PlayerUIController : MonoBehaviour
     void playUIsetting(){
         Camera.main.transform.position = newCameraPosition;
         Camera.main.transform.eulerAngles = newCameraRotation;
-        isOnGame=true;
+        myCharacterSwitcher.isOnGame=true;
 
             // Deactivate the UI object
         mainMenu.SetActive(false);
         myScoreScript.NewGame();
+        Debug.Log("Play-UIController");
     }
 
     public void gameoverUIsetting(){
         Camera.main.transform.position = basePos;
         Camera.main.transform.eulerAngles = baseRot;
-        isOnGame=false;
+        myCharacterSwitcher.isOnGame=false;
 
         // Activate the UI object
         mainMenu.SetActive(true);

@@ -10,7 +10,7 @@ public class AudioManager : MonoBehaviour
     public static AudioManager instance;
     public float[] spectrumWidth;
     public CalibrationTimer calibrationTimer;
-    public PlayerUIController myUIController;
+    public CharacterSwitcher myCharacterSwitcher;
 
     //AudioSource
     // [Header("---------- Audi Source ----------")]
@@ -37,7 +37,7 @@ public class AudioManager : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (calibrationTimer != null && calibrationTimer.aktivPlayerModus && myUIController.isOnGame && isActiveAndEnabled)
+        if (calibrationTimer != null && calibrationTimer.aktivPlayerModus && myCharacterSwitcher.isOnGame && isActiveAndEnabled)
         {
             audioSource.GetSpectrumData(spectrumWidth, 0, FFTWindow.Blackman);
             audioSource.enabled = true;

@@ -1,16 +1,24 @@
 using UnityEngine;
 using System.Collections;
-
+using UnityEngine.UI;
 //als Game Mangager
 public class ScoreScript : MonoBehaviour {
     public int score = 0;
     public int bombCount = 0;
     public static ScoreScript Instance { get; private set; }
     public PlayerUIController myUIController;
-   public ObjectSpawner spawner;
-    public AudioSource audio; 
+    public ObjectSpawner spawner;
+    public AudioSource audioS; 
+
+
+    public Image []hearts;
+
     private void Start()
     {
+    }
+
+    public void updateHealth(){
+        hearts[bombCount].color=Color.gray;
     }
 
     
@@ -20,21 +28,22 @@ public class ScoreScript : MonoBehaviour {
 
         score = 0;
         bombCount = 0;
+        spawner.enabled = true;
         //audio.enabled = true; 
-        if (audio.enabled==true)
+        if (audioS.enabled==true)
         {
-            audio.Play();
+            audioS.Play();
 
         }
-        spawner.enabled = true;
+
         spawner.actInterval = spawner.IntervalBetweenSpawn;
-      
+        Debug.Log("Play-ScoreScript");
     }
 
      public void Explode()
     {
         Debug.Log("Exploded");
-        audio.Stop();
+        audioS.Stop();
         spawner.enabled = false; 
         //audio.enabled=false; 
         myUIController.gameoverUIsetting();

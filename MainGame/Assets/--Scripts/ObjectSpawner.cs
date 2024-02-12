@@ -27,7 +27,7 @@ public class ObjectSpawner : MonoBehaviour
 
     public Transform[] SpawnPoints;
 
-    public PlayerUIController myUIController;
+     public CharacterSwitcher myCharacterSwitcher;
 
 
 
@@ -39,9 +39,9 @@ public class ObjectSpawner : MonoBehaviour
 
 
         // Überprüft, ob eine gültige Referenz auf CalibrationTimer vorhanden ist und ob die Bedingung für das Spawnen erfüllt ist.
-        if (calibrationTimer != null && myUIController.isOnGame &&isActiveAndEnabled)
+        if (calibrationTimer != null && myCharacterSwitcher.isOnGame &&isActiveAndEnabled)
         {
-//            Debug.Log("highFrequency: " + highFrequency);
+            Debug.Log("Play-Spawner");
 
             if (objectReactingToBass > 1.2f)
             {

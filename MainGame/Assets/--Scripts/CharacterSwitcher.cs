@@ -12,6 +12,7 @@ public class CharacterSwitcher : MonoBehaviour
 
     //bool initialized;
     public RawImage[] images;  
+    public bool isOnGame= false;
 
     public void NextCharacter()
     {

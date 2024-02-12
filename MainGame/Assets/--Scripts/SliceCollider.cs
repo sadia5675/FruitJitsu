@@ -38,6 +38,7 @@ public class SliceCollider : MonoBehaviour
              // Destroy the particle after the specified duration
             Destroy(minusEffectInstance.gameObject, effectDuration);
             Destroy(collisionGO);
+            myScoreScript.updateHealth();
             myScoreScript.bombCount++;
             Debug.Log("Bomb Count: " +myScoreScript.bombCount);
             if (myScoreScript.bombCount >= 3) {
