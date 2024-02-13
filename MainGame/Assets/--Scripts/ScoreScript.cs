@@ -1,20 +1,32 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using TMPro;
 //als Game Mangager
 public class ScoreScript : MonoBehaviour {
     public int score = 0;
+    public bool showScoreLabel = false;
     public int maxScore = 0;
     public int bombCount = 0;
     public static ScoreScript Instance { get; private set; }
     public PlayerUIController myUIController;
     public ObjectSpawner spawner;
+    public Canvas mainCanvas;
+    public TextMeshProUGUI scoreText;
 
 
     public Image []hearts;
 
-    private void Start()
+    private void Update()
     {
+        if(showScoreLabel){
+            mainCanvas.enabled=true;
+            scoreText.SetText("Score :" + score);
+
+        } else {
+            mainCanvas.enabled=false;
+            scoreText.SetText("");
+        }
     }
 
     public void updateHealth(){
@@ -47,6 +59,7 @@ public class ScoreScript : MonoBehaviour {
 
         spawner.actInterval = spawner.intervalBetweenSpawn;
         Debug.Log("Play-ScoreScript");
+        showScoreLabel=true;
     }
 
      public void Explode()
@@ -57,6 +70,7 @@ public class ScoreScript : MonoBehaviour {
             maxScore = score;
         }
         myUIController.gameoverUIsetting();
+        showScoreLabel=false;
         //StartCoroutine(ExplodeSequence());
     }
 
@@ -95,14 +109,5 @@ public class ScoreScript : MonoBehaviour {
     //     }
     // }
 
-
-    void OnGUI()
-    {
-        //We display the game GUI from the playerscript
-        //It would be nicer to have a seperate script dedicated to the GUI though...
-        
-
-        GUILayout.Label("Score: " + score);
-    }    
 
 }

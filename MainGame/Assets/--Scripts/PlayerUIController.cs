@@ -9,6 +9,9 @@ public class PlayerUIController : MonoBehaviour
     public GameObject instructionMenu;
     public GameObject optionMenu;
     public GameObject switchMenu;
+    public GameObject calibrationtimerMenu;
+
+
     public TextMeshProUGUI maxScore;
     public TextMeshProUGUI score;
     public RawImage loggo;
@@ -16,6 +19,7 @@ public class PlayerUIController : MonoBehaviour
 
     public ScoreScript myScoreScript;
     public CharacterSwitcher myCharacterSwitcher;
+    public CalibrationTimer myCalibration;
     public AudioManager audioM;
     
 
@@ -36,9 +40,14 @@ public class PlayerUIController : MonoBehaviour
 
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
-        
+     if(myCalibration.aktivPlayerModus && !myCalibration.isAktivPlayerModusUsed){
+        Debug.Log("MainMenu after Calibration");
+        mainMenu.SetActive(true);
+        calibrationtimerMenu.SetActive(false);
+        myCalibration.isAktivPlayerModusUsed = true;
+     }   
     }
 
     void OnTriggerEnter(Collider theCollision)
@@ -102,12 +111,7 @@ public class PlayerUIController : MonoBehaviour
             optionMenu.SetActive(false);
             mainMenu.SetActive(true);
         }
-        if (collisionGO.CompareTag("BackOption"))
-        {
-            optionMenu.SetActive(true);
-            instructionMenu.SetActive(false);
-            switchMenu.SetActive(false);
-        }
+
 
     }
 // void choosePlayer()
