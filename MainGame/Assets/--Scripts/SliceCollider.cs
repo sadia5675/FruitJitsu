@@ -30,7 +30,11 @@ public class SliceCollider : MonoBehaviour
             //Destroy(plusEffectInstance.gameObject, effectDuration);
   
             myScoreScript.score++;
+        }else if (collisionGO.CompareTag("Food"))
+        {
+            myScoreScript.score+=3;
         }
+
         else if (collisionGO.CompareTag("Bomb"))
         {
 

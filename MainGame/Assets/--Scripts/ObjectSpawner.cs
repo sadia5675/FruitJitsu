@@ -5,12 +5,15 @@ using UnityEngine;
 public class ObjectSpawner : MonoBehaviour
 {
     // Ein Array, das die verschiedenen Frucht-GameObjects enth�lt, die gespawnt werden k�nnen.
-    public GameObject[] Fruits;
+    public GameObject[] fruits;
+
+    public GameObject[] food;
+
     // Der Punkt, an dem die Fr�chte gespawnt werden sollen.
-    public Transform SpawnPoint;
+    public Transform spawnPoint;
     // Die Zeit, die zwischen den einzelnen Spawns vergeht. 
     //Startspeed
-    public float IntervalBetweenSpawn = 2;
+    public float intervalBetweenSpawn = 2;
     public float actInterval;
 
     //je kleiner ist diese Variable, desto kleiner IntervalBetweenSpawn ist -> spawn automatisch schneller
@@ -21,11 +24,13 @@ public class ObjectSpawner : MonoBehaviour
 
     private float bombRate = 0.4f;
 
+    private float foodRate = 2.6f;
+
     public Transform bombPrefab;
     // Öffentliche Referenz, dadurch kann ObjectSpawner auf die öffentlichen Eigenschaften und Methoden von CalibrationTimer zugreifen.
     public CalibrationTimer calibrationTimer;
 
-    public Transform[] SpawnPoints;
+    public Transform[] spawnPoints;
 
      public CharacterSwitcher myCharacterSwitcher;
 
@@ -41,19 +46,22 @@ public class ObjectSpawner : MonoBehaviour
         // Überprüft, ob eine gültige Referenz auf CalibrationTimer vorhanden ist und ob die Bedingung für das Spawnen erfüllt ist.
         if (calibrationTimer != null && myCharacterSwitcher.isOnGame &&isActiveAndEnabled)
         {
-            Debug.Log("Play-Spawner");
 
             if (objectReactingToBass > 1.2f)
             {
 
                     if (Random.Range(0f, 3f) < bombRate)
                     {
-                        SpawnBomb(SpawnPoints[0]);
+                        SpawnBomb(spawnPoints[0]);
+                    }
+                    if (Random.Range(0f, 3f) > foodRate)
+                    {
+                        SpawnFood(spawnPoints[0]);
                     }
                     else
-                    {
-                        SpawnFruit(SpawnPoints[0]);
-                    }
+                        {
+                            SpawnFruit(spawnPoints[0]);
+                        }
             }
             if (highFrequency > 2.9f)
             {
@@ -61,11 +69,16 @@ public class ObjectSpawner : MonoBehaviour
 
                 if (Random.Range(0f, 3f) < bombRate)
                 {
-                    SpawnBomb(SpawnPoints[1]);
+                    SpawnBomb(spawnPoints[1]);
+                }
+                if (Random.Range(0f, 3f) > foodRate)
+                {
+                     Debug.Log("spawn food");
+                    SpawnFood(spawnPoints[1]);
                 }
                 else
                 {
-                    SpawnFruit(SpawnPoints[1]);
+                    SpawnFruit(spawnPoints[1]);
                 }
             }
         }
@@ -79,7 +92,14 @@ public class ObjectSpawner : MonoBehaviour
     void SpawnFruit(Transform spawnPoint)
     {
 
-        int rand = Random.Range(0, Fruits.Length);
-        Instantiate(Fruits[rand], new Vector3(spawnPoint.position.x, spawnPoint.position.y + 1f, spawnPoint.position.z), Quaternion.identity);
+        int rand = Random.Range(0, fruits.Length);
+        Instantiate(fruits[rand], new Vector3(spawnPoint.position.x, spawnPoint.position.y + 1f, spawnPoint.position.z), Quaternion.identity);
+    }
+
+    void SpawnFood(Transform spawnPoint)
+    {
+        Debug.Log("spawn food methode");
+        int rand = Random.Range(0, food.Length);
+        Instantiate(food[rand], new Vector3(spawnPoint.position.x, spawnPoint.position.y + 1f, spawnPoint.position.z), Quaternion.identity);
     }
 }

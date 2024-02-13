@@ -4,6 +4,7 @@ using UnityEngine.UI;
 //als Game Mangager
 public class ScoreScript : MonoBehaviour {
     public int score = 0;
+    public int maxScore = 0;
     public int bombCount = 0;
     public static ScoreScript Instance { get; private set; }
     public PlayerUIController myUIController;
@@ -44,14 +45,17 @@ public class ScoreScript : MonoBehaviour {
         bombCount = 0;
         spawner.enabled = true;
 
-        spawner.actInterval = spawner.IntervalBetweenSpawn;
+        spawner.actInterval = spawner.intervalBetweenSpawn;
         Debug.Log("Play-ScoreScript");
     }
 
      public void Explode()
     {
         Debug.Log("Exploded");
-        spawner.enabled = false; 
+        spawner.enabled = false;
+        if (maxScore < score) {
+            maxScore = score;
+        }
         myUIController.gameoverUIsetting();
         //StartCoroutine(ExplodeSequence());
     }

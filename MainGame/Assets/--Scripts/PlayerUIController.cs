@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using TMPro;
 using UnityEngine.UI;
 
 public class PlayerUIController : MonoBehaviour
@@ -7,7 +8,11 @@ public class PlayerUIController : MonoBehaviour
     public GameObject mainMenu;
     public GameObject instructionMenu;
     public GameObject optionMenu;
-    public GameObject switchMenu; 
+    public GameObject switchMenu;
+    public TextMeshProUGUI maxScore;
+    public TextMeshProUGUI score;
+    public RawImage loggo;
+    public GameObject destroyer;
 
     public ScoreScript myScoreScript;
     public CharacterSwitcher myCharacterSwitcher;
@@ -17,6 +22,9 @@ public class PlayerUIController : MonoBehaviour
      Vector3 newCameraPosition=new Vector3(0.4f, -3.23f, -9.76f);
      Vector3 newCameraRotation=new Vector3(30.8f, -179.63f, -0.045f);
      Vector3 basePos,baseRot;
+
+    Vector3 oldDestroyerPos = new Vector3(-0.04f, -5.31f, 5.05f);
+    Vector3 newDestroyerPos = new Vector3(-0.04f, -5.31f, -14.15f);
 
     void Start()
     {
@@ -143,10 +151,11 @@ public class PlayerUIController : MonoBehaviour
     void playUIsetting(){
         Camera.main.transform.position = newCameraPosition;
         Camera.main.transform.eulerAngles = newCameraRotation;
+        destroyer.transform.position = oldDestroyerPos;
         myCharacterSwitcher.isOnGame=true;
         audioM.startSong = true;
 
-            // Deactivate the UI object
+        // Deactivate the UI object
         mainMenu.SetActive(false);
         myScoreScript.NewGame();
         myScoreScript.resetHealth();
@@ -156,8 +165,13 @@ public class PlayerUIController : MonoBehaviour
     public void gameoverUIsetting(){
         Camera.main.transform.position = basePos;
         Camera.main.transform.eulerAngles = baseRot;
+        destroyer.transform.position = newDestroyerPos;
         myCharacterSwitcher.isOnGame=false;
         audioM.startSong = false;
+        loggo.enabled = false;
+
+        maxScore.SetText("maxScore:"+(myScoreScript.maxScore));
+        score.SetText("score:" + (myScoreScript.score));
 
         // Activate the UI object
         mainMenu.SetActive(true);
