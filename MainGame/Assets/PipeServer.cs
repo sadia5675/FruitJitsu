@@ -47,6 +47,7 @@ public class PipeServer : MonoBehaviour
         return virtualHip;
     }
 
+    // Die Startmethode initialisiert die NamedPipeServerStream und startet einen Thread (Run), um Daten aus der Pipe zu lesen
     private void Start()
     {
         System.Globalization.CultureInfo.DefaultThreadCurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
@@ -59,6 +60,8 @@ public class PipeServer : MonoBehaviour
         t.Start();
 
     }
+
+    //Diese Methode wird jedes Frame aufgerufen und aktualisiert die Visualisierung der Körperlandmarken basierend auf den gesammelten Daten
     private void Update()
     {
         UpdateBody(body);
@@ -92,6 +95,7 @@ public class PipeServer : MonoBehaviour
         bodyParent.gameObject.SetActive(visible);
     }
 
+    //Diese Methode läuft im separaten Thread und liest kontinuierlich Daten aus der Pipe, um die Positionen der Körperlandmarken zu extrahieren und zu verarbeiten
     private void Run()
     {
         System.Globalization.CultureInfo.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
@@ -156,7 +160,7 @@ public class PipeServer : MonoBehaviour
             accumulatedValuesCount = ac;
         }
     }
-
+    //Diese Klasse verwaltet die Visualisierung der Landmarken und Linien, sowie die Verarbeitung der empfangenen Daten
     public class Body
     {
         public Transform parent;

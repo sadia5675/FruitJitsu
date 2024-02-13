@@ -2,6 +2,9 @@
 // NOTE: image = cv2.flip(image, 1) in the Python side may also be of interest to you as well.
 
 #if FLIP
+
+//Landmark - Enum definiert eine Liste von Körperlandmarken
+// ermöglicht es, auf die verschiedenen Landmarken zuzugreifen und sie entsprechend zu verarbeiten
 public enum Landmark
 {
     NOSE = 0,
