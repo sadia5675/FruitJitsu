@@ -11,13 +11,13 @@ TagManager:
   - Audio
   - PlayButton
   - SwitchButton
-  - OkButton
   - NextButton
-  - InstructionButton
   - OptionButton
   - BackMain
   - BackOption
   - Food
+  - HowToPlayButton
+  - OkButton
   layers:
   - Default
   - TransparentFX

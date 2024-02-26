@@ -21,7 +21,8 @@ public class AudioManager : MonoBehaviour
     public AudioClip bombe;
     public AudioClip gameOver;
     public AudioClip juicySound;
-
+    public AudioClip buttonclick;
+    public AudioClip nextBild;
     public void PlaySFX(AudioClip clip)
     {
         SFXSource.PlayOneShot(clip);

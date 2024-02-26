@@ -6,8 +6,7 @@ using UnityEngine.UI;
 public class PlayerUIController : MonoBehaviour
 {
     public GameObject mainMenu;
-    public GameObject instructionMenu;
-    public GameObject optionMenu;
+    public GameObject howToPlayMenu;//ist unser how to play Menü
     public GameObject switchMenu;
     public GameObject calibrationtimerMenu;
 
@@ -21,7 +20,11 @@ public class PlayerUIController : MonoBehaviour
     public CharacterSwitcher myCharacterSwitcher;
     public CalibrationTimer myCalibration;
     public AudioManager audioM;
-    
+
+    float timeBetweenImages = 0f;
+    public RawImage calibrationStand;
+    public RawImage schnittBewegung;
+    public RawImage abweichBewegung;
 
      Vector3 newCameraPosition=new Vector3(0.4f, -3.23f, -9.76f);
      Vector3 newCameraRotation=new Vector3(30.8f, -179.63f, -0.045f);
@@ -38,7 +41,10 @@ public class PlayerUIController : MonoBehaviour
         //switchMenu.SetActive(false); 
     }
 
-
+    public void Awake()
+    {
+        audioM = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
     // Update is called once per frame
     void Update()
     {
@@ -57,6 +63,7 @@ public class PlayerUIController : MonoBehaviour
         if (collisionGO.CompareTag("PlayButton"))
         {
             Debug.Log("Play ");
+            audioM.PlaySFX(audioM.buttonclick);
             // Call a function or perform an action when player collides with the button
             playUIsetting();
 
@@ -67,11 +74,19 @@ public class PlayerUIController : MonoBehaviour
             // Call a function or perform an action when player collides with the button
             if (mainMenu != null)
             {
+
+                audioM.PlaySFX(audioM.buttonclick);
                 // Deactivate the UI object
                 mainMenu.SetActive(false);
-                optionMenu.SetActive(false);
+                //howToPlayMenu.SetActive(false);
                 switchMenu.SetActive(true);
             }
+        }
+        if (collisionGO.CompareTag("NextButton"))
+        {
+            Debug.Log("N�chster Player ");
+            audioM.PlaySFX(audioM.nextBild);
+            myCharacterSwitcher.NextCharacter();
 
         }
         if (collisionGO.CompareTag("OkButton"))
@@ -80,38 +95,61 @@ public class PlayerUIController : MonoBehaviour
             // Call a function or perform an action when player collides with the button
             if (switchMenu != null)
             {
+                audioM.PlaySFX(audioM.buttonclick);
                 // Deactivate the UI object
+                //howToPlayMenu.SetActive(false);
                 mainMenu.SetActive(true);
                 switchMenu.SetActive(false);
             }
 
         }
-        if (collisionGO.CompareTag("NextButton"))
+        if (collisionGO.CompareTag("HowToPlayButton"))
         {
-            Debug.Log("N�chster Player ");
-            myCharacterSwitcher.NextCharacter();
+            Debug.Log("Zur How to Play ");
+            // Call a function or perform an action when player collides with the button
+            if (mainMenu != null)
+            {
+                audioM.PlaySFX(audioM.buttonclick);
+                mainMenu.SetActive(false);
+                howToPlayMenu.SetActive(true);
+            }
+            if (timeBetweenImages >= 0 && timeBetweenImages < 6)
+            {
+                calibrationStand.enabled = true;
+                schnittBewegung.enabled = false;
+                abweichBewegung.enabled = false;
+            }
+            else if (timeBetweenImages >= 6 && timeBetweenImages < 12)
+            {
+                calibrationStand.enabled = false;
+                schnittBewegung.enabled = true;
+                abweichBewegung.enabled = false;
+            }
+            else if (timeBetweenImages >= 12 && timeBetweenImages < 18)
+            {
+                calibrationStand.enabled = false;
+                schnittBewegung.enabled = false;
+                abweichBewegung.enabled = true;
+            }
+            else
+            {
+                timeBetweenImages = 0; //sobald über 18 fängt es wieder von vorne an 
+            }
 
-            
+            timeBetweenImages++; //zählt mit
         }
 
-        if (collisionGO.CompareTag("OptionButton"))
+        if (collisionGO.CompareTag("OkButton"))
         {
-            mainMenu.SetActive(false);
-            optionMenu.SetActive(true);
+            Debug.Log("Zur�ck zum Start ");
+            // Call a function or perform an action when player collides with the button
+            if (howToPlayMenu != null)
+            {
+                audioM.PlaySFX(audioM.buttonclick);
+                mainMenu.SetActive(true);
+                howToPlayMenu.SetActive(false);
+            }
         }
-
-
-        if (collisionGO.CompareTag("InstructionButton"))
-        {
-            optionMenu.SetActive(false);
-            instructionMenu.SetActive(true);
-        }
-        if (collisionGO.CompareTag("BackMain"))
-        {
-            optionMenu.SetActive(false);
-            mainMenu.SetActive(true);
-        }
-
 
     }
 // void choosePlayer()
