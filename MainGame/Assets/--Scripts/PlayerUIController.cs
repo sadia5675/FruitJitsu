@@ -2,7 +2,10 @@ using System;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine.UIElements;
+using UnityEngine.Scripting;
 public class PlayerUIController : MonoBehaviour
 {
     public GameObject mainMenu;
@@ -21,7 +24,8 @@ public class PlayerUIController : MonoBehaviour
     public CalibrationTimer myCalibration;
     public AudioManager audioM;
 
-    float timeBetweenImages = 0f;
+    int timer= 18;
+    int counter = 3; 
     public RawImage calibrationStand;
     public RawImage schnittBewegung;
     public RawImage abweichBewegung;
@@ -112,31 +116,8 @@ public class PlayerUIController : MonoBehaviour
                 audioM.PlaySFX(audioM.buttonclick);
                 mainMenu.SetActive(false);
                 howToPlayMenu.SetActive(true);
+                StartCoroutine(DiashowRound());
             }
-            if (timeBetweenImages >= 0 && timeBetweenImages < 6)
-            {
-                calibrationStand.enabled = true;
-                schnittBewegung.enabled = false;
-                abweichBewegung.enabled = false;
-            }
-            else if (timeBetweenImages >= 6 && timeBetweenImages < 12)
-            {
-                calibrationStand.enabled = false;
-                schnittBewegung.enabled = true;
-                abweichBewegung.enabled = false;
-            }
-            else if (timeBetweenImages >= 12 && timeBetweenImages < 18)
-            {
-                calibrationStand.enabled = false;
-                schnittBewegung.enabled = false;
-                abweichBewegung.enabled = true;
-            }
-            else
-            {
-                timeBetweenImages = 0; //sobald über 18 fängt es wieder von vorne an 
-            }
-
-            timeBetweenImages++; //zählt mit
         }
 
         if (collisionGO.CompareTag("OkButton"))
@@ -151,6 +132,57 @@ public class PlayerUIController : MonoBehaviour
             }
         }
 
+    }
+    private IEnumerator Diashow()
+    {
+        int t = timer;
+       
+        while (t > 0)
+        {
+            if (t == 18)
+            {
+                calibrationStand.enabled = true;
+                schnittBewegung.enabled = false;
+                abweichBewegung.enabled = false;
+                yield return new WaitForSeconds(6f);
+                t = t - 6;
+            }
+            else if (t == 12)
+            {
+                calibrationStand.enabled = false;
+                schnittBewegung.enabled = true;
+                abweichBewegung.enabled = false;
+                yield return new WaitForSeconds(6f);
+                t = t - 6;
+            }
+            else if (t == 6)
+            {
+                calibrationStand.enabled = false;
+                schnittBewegung.enabled = false;
+                abweichBewegung.enabled = true;
+                yield return new WaitForSeconds(6f);
+                t = t - 6;
+            }
+        }
+    }
+    private IEnumerator DiashowRound()
+    {
+        int c = counter;
+        while (c > 0)
+        {
+            StartCoroutine(Diashow());
+            Debug.Log("raus aus start counting");
+            yield return new WaitForSeconds(18f);
+            c = c - 1;
+
+            StartCoroutine(Diashow());
+            yield return new WaitForSeconds(18f);
+            c = c - 1;
+
+            StartCoroutine(Diashow());
+            yield return new WaitForSeconds(18f);
+            c = c - 1;
+        }
     }
 // void choosePlayer()
 //     {

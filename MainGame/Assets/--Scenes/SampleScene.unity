@@ -3870,6 +3870,7 @@ MonoBehaviour:
   gameOver: {fileID: 0}
   juicySound: {fileID: 0}
   buttonclick: {fileID: 0}
+  nextBild: {fileID: 0}
 --- !u!1 &837046975
 GameObject:
   m_ObjectHideFlags: 0
@@ -5033,7 +5034,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1238905547
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6530,6 +6531,7 @@ MonoBehaviour:
   gameOver: {fileID: 8300000, guid: 6d0fabd86fd619148ae459dfe3600ae6, type: 3}
   juicySound: {fileID: 8300000, guid: 606fc4fcc44e3d94ea740f9a373e5af8, type: 3}
   buttonclick: {fileID: 8300000, guid: a28ba6afb1530ce48a4e110253071777, type: 3}
+  nextBild: {fileID: 0}
 --- !u!82 &1908817286
 AudioSource:
   m_ObjectHideFlags: 0
@@ -7134,7 +7136,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2005428939
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7987,13 +7989,29 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 444361957}
     - target: {fileID: 7314840739847284563, guid: eaaf0c1954d265f42b29f62d0db382bb, type: 3}
+      propertyPath: howToPlayMenu
+      value: 
+      objectReference: {fileID: 1140633072}
+    - target: {fileID: 7314840739847284563, guid: eaaf0c1954d265f42b29f62d0db382bb, type: 3}
       propertyPath: myCalibration
       value: 
       objectReference: {fileID: 1232159306}
     - target: {fileID: 7314840739847284563, guid: eaaf0c1954d265f42b29f62d0db382bb, type: 3}
+      propertyPath: abweichBewegung
+      value: 
+      objectReference: {fileID: 1536827049}
+    - target: {fileID: 7314840739847284563, guid: eaaf0c1954d265f42b29f62d0db382bb, type: 3}
       propertyPath: instructionMenu
       value: 
       objectReference: {fileID: 1140633072}
+    - target: {fileID: 7314840739847284563, guid: eaaf0c1954d265f42b29f62d0db382bb, type: 3}
+      propertyPath: schnittBewegung
+      value: 
+      objectReference: {fileID: 2103859621}
+    - target: {fileID: 7314840739847284563, guid: eaaf0c1954d265f42b29f62d0db382bb, type: 3}
+      propertyPath: calibrationStand
+      value: 
+      objectReference: {fileID: 1735385840}
     - target: {fileID: 7314840739847284563, guid: eaaf0c1954d265f42b29f62d0db382bb, type: 3}
       propertyPath: myCharacterSwitcher
       value: 
