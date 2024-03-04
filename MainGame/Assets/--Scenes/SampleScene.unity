@@ -4155,6 +4155,8 @@ MonoBehaviour:
   - {fileID: 364923105}
   - {fileID: 381108382}
   - {fileID: 1042003718}
+  restPosition: {x: -0.04, y: -5.31, z: 6}
+  spielPosition: {x: 0.83, y: -5.4, z: 0.14}
   images: []
   isOnGame: 0
 --- !u!1 &1057690297
@@ -7136,7 +7138,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2005428939
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7322,6 +7324,8 @@ MonoBehaviour:
   - {fileID: 364923105}
   - {fileID: 1225731648}
   - {fileID: 2012961471}
+  restPosition: {x: -0.04, y: -5.31, z: 6}
+  spielPosition: {x: 0.83, y: -5.4, z: 0.14}
   images:
   - {fileID: 1077302570}
   - {fileID: 1885375642}

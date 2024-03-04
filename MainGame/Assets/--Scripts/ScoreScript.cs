@@ -21,7 +21,7 @@ public class ScoreScript : MonoBehaviour {
     {
         if(showScoreLabel){
             mainCanvas.enabled=true;
-            scoreText.SetText("Score :" + score);
+            scoreText.SetText("Score: " + score);
 
         } else {
             mainCanvas.enabled=false;
@@ -71,43 +71,9 @@ public class ScoreScript : MonoBehaviour {
         }
         myUIController.gameoverUIsetting();
         showScoreLabel=false;
-        //StartCoroutine(ExplodeSequence());
+       
     }
 
-    // private IEnumerator ExplodeSequence()
-    // {
-    //     float elapsed = 0f;
-    //     float duration = 0.5f;
-
-    //     // Fade to white
-    //     while (elapsed < duration)
-    //     {
-    //         float t = Mathf.Clamp01(elapsed / duration);
-    //         //fadeImage.color = Color.Lerp(Color.clear, Color.white, t);
-
-    //         Time.timeScale = 1f - t;
-    //         elapsed += Time.unscaledDeltaTime;
-
-    //         yield return null;
-    //     }
-
-    //     yield return new WaitForSecondsRealtime(1f);
-
-    //     NewGame();
-
-    //     elapsed = 0f;
-
-    //     // Fade back in
-    //     while (elapsed < duration)
-    //     {
-    //         float t = Mathf.Clamp01(elapsed / duration);
-    //         //fadeImage.color = Color.Lerp(Color.white, Color.clear, t);
-
-    //         elapsed += Time.unscaledDeltaTime;
-
-    //         yield return null;
-    //     }
-    // }
 
 
 }
